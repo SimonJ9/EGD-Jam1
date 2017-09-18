@@ -7,6 +7,13 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\test_player</sprite>
+    <sprite>sprites\test_npc</sprite>
+    <sprite>sprites\Fear</sprite>
+    <sprite>sprites\Happiness</sprite>
+    <sprite>sprites\Hope</sprite>
+    <sprite>sprites\Insecurity</sprite>
+    <sprite>sprites\Love</sprite>
+    <sprite>sprites\Suspicion</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\test_bg</background>
@@ -21,8 +28,20 @@
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_textbox</object>
+    <object>objects\obj_npc</object>
+    <object>objects\obj_n_Fear</object>
+    <object>objects\obj_n_Happiness</object>
+    <object>objects\obj_n_Hope</object>
+    <object>objects\obj_n_Insecurity</object>
+    <object>objects\obj_n_Love</object>
+    <object>objects\obj_n_Suspicion</object>
+    <object>objects\obj_titlebut</object>
   </objects>
+  <timelines name="timelines"/>
   <rooms name="rooms">
+    <room>rooms\rm_title</room>
+    <room>rooms\rm_main_story</room>
+    <room>rooms\rm_ending_1</room>
     <room>rooms\playground</room>
   </rooms>
   <help>

@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>friction = 0.2;
+            <string>image_speed = 0;
+image_index = 0;
+friction = 0.4;
+
 </string>
           </argument>
         </arguments>
@@ -50,8 +53,30 @@
             <kind>1</kind>
             <string>//show_debug_message(string(hspeed) + ", " + string(vspeed));
 
+///maximum speed restriction
 if(speed &gt;= 6) {
    speed = 6;
+}
+
+///interact with npcs
+if keyboard_check(vk_space)
+{
+    ///test npc
+    if place_meeting(x, y, obj_npc)
+    {
+        scr_dialoguebox("You met the test npc!! 
+                lskdpfijaw;ejfasdfsdfasdfasdfasdf
+                cxszocwhlkjfxszik vb9823ysadfasdf
+                9c8p243q fasp98cdh2l3qkj haos98lc
+                lskjdch p98q342h fp;asdcvao;pisdy
+                cvp98h32lud h98p2y rlsadcsado8f y
+                243hfiulo ysadfp98cv h324pq98f du
+                yhasdliof yq234[ r[as09df uiul243
+                qf yoliq3u4f cvb9paesawa4rgfav 24
+                3wqvy[98032q4f2yh[0paws3e4r yvfgc
+                okl8 aesr tg vo87lq234yvp934wytv 
+                7894 ;oasijcvalkwejfdo;ajsc;", 0.5, 400, 500);
+    }
 }
 </string>
           </argument>

@@ -69,14 +69,16 @@ if(alpha &lt; 1)
 
 draw_set_font(default_dialog);
 draw_set_colour(c_gray);
-draw_rectangle(x, y, x + boxwidth, y + boxheight, 0);
+draw_rectangle(0.0, window_get_height()*3.0/4.0, 
+                    window_get_width(), window_get_height(), 0);
 
 draw_set_colour(c_black);
-draw_rectangle(x, y, x + boxwidth, y + boxheight, 1);
+draw_rectangle(0.0, window_get_height()*3.0/4.0,
+                    window_get_width(), window_get_height(), 1);
 draw_text_ext 
 (
-    x + padding,
-    y + padding,
+    padding,
+    window_get_height()*3.0/4.0 + padding,
     print,
     font_size + (font_size/2),
     maxlength

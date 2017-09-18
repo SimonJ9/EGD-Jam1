@@ -12,6 +12,8 @@ with (text)
     text_length = string_length(txt);
     font_size = font_get_size(font);
     
+    draw_set_font(default_dialog);
+    
     text_width = string_width_ext(txt, font_size + (font_size/2), maxlength);
     text_height = string_height_ext(txt, font_size + (font_size/2), maxlength);
     
