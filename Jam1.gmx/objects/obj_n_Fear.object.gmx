@@ -7,8 +7,51 @@
   <persistent>0</persistent>
   <parentName>obj_npc</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
-  <PhysicsObject>0</PhysicsObject>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///dialogue
+
+//Action 1
+d1[0] = "L-leave. Now.";
+d1[1] = "B-before I-I-I do any m-more, uh, harm.";
+d1[2] = "You don’t underst-t-t-and! If y-you fight me, you could l-lose! It might alr-r-r-eady be too late!";
+d1[3] = "E-even w-worse! W-without m-me, who’s gonna keep The Stoker f-from doin’ somethin’ stupid? I hafta keep him down! Especially n-now!";
+d1[4] = "Yeah, y-you’d know all about that, huh?";
+d1[5] = "You and g-g-goddamned C-courage. ";
+
+//Action 2
+d2[0] = "T-trust me. I-if The Stoker were t-to be free…";
+d2[1] = "It w-would be worse.";
+d2[2] = "Much worse.";
+d2[3] = "He’d d-do something dumb, fail a-and then Pride w-would d-die a-and…";
+d2[4] = "A-and then wh-who’d protect u-us from t-t-t-the P-p-p-p-eacef-f-ful O-one?";
+d2[5] = "I-I’m d-doing it for your o-own g-good.";
+
+//Action inf
+di[0] = "L-let me w-work!";
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
+  <PhysicsObject>-1</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
@@ -19,5 +62,8 @@
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
-  <PhysicsShapePoints/>
+  <PhysicsShapePoints>
+    <point>57,109</point>
+    <point>110,110</point>
+  </PhysicsShapePoints>
 </object>

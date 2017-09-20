@@ -17,6 +17,11 @@
   </sprites>
   <backgrounds name="background">
     <background>background\test_bg</background>
+    <background>background\bg_r1</background>
+    <background>background\br_r2</background>
+    <background>background\bg_r3up</background>
+    <background>background\bg_r3down</background>
+    <background>background\bg_main</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -37,11 +42,12 @@
     <object>objects\obj_n_Suspicion</object>
     <object>objects\obj_titlebut</object>
   </objects>
-  <timelines name="timelines"/>
   <rooms name="rooms">
     <room>rooms\rm_title</room>
-    <room>rooms\rm_main_story</room>
+    <room>rooms\rm_main_r1</room>
     <room>rooms\rm_ending_1</room>
+    <room>rooms\rm_main_r2</room>
+    <room>rooms\rm_main_r3</room>
     <room>rooms\playground</room>
   </rooms>
   <help>

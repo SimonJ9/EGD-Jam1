@@ -1,4 +1,4 @@
-//scr_dialoguebux("text", real typing_speed, real x, real y)
+//scr_dialoguebox("text", real typing_speed, real x, real y)
 
 text = instance_create(argument2, argument3, obj_textbox);
 with (text)

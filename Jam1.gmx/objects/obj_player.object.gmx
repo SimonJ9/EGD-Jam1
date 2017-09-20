@@ -25,10 +25,61 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>///Variables
+image_speed = 0;
 image_index = 0;
 friction = 0.4;
+txtexist = false;
 
+fear1 = 0;
+fear2 = 0;
+
+hap1 = 0;
+hap2 = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///dialogues
+
+///To Suspicion
+
+///To Happiness
+d1_hap[0] = "Likewise.";
+
+d2_hap[0] = "You’re useless, you know? Why aren’t you doing your job?";
+d2_hap[1] = "(Sigh) Well, what do you want this time?";
+
+///To Fear
+d1_fea[0] = "But...";
+d1_fea[1] = "I...";
+d1_fea[2] = "And if I don't?";
+d1_fea[3] = "...";
+d1_fea[4] = "It shouldn’t even be you in the kitchen. Happiness is supposed to be the one feeding The Stoker.";
+
+d2_fea[0] = "Listen, you have to stop. The reek might, attract, uh…";
+d2_fea[1] = "You know…";
+d2_fea[2] = "Knifey over there’s cousin.";
+d2_fea[3] = "…";
+d2_fea[4] = "I hate you.";
+
+di_fea[0] = "(Seething)";
 </string>
           </argument>
         </arguments>
@@ -51,39 +102,80 @@ friction = 0.4;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//show_debug_message(string(hspeed) + ", " + string(vspeed));
+            <string>///Movement and collision
+acc = 1.5;
+can_move = true;
+if(txtexist){
+    can_move = false;
+}
 
 ///maximum speed restriction
 if(speed &gt;= 6) {
    speed = 6;
 }
 
-///interact with npcs
-if keyboard_check(vk_space)
+if(!can_move)
 {
-    ///test npc
-    if place_meeting(x, y, obj_npc)
+    hspeed = 0;
+    vspeed = 0;
+}
+
+///collision detection
+if(place_meeting(x, y, obj_npc))
+{
+    sh = sprite_get_height(object_get_sprite(obj_npc));
+    sw = sprite_get_width(object_get_sprite(obj_npc));
+    
+    dx = obj_npc.x - x;
+    dy = obj_npc.y - y;
+    
+    if ( abs(dx) &lt; (sprite_width + sw)/2 &amp;&amp; 
+        abs(dy) &lt; (sprite_height + sh)/2)
     {
-        scr_dialoguebox("You met the test npc!! 
-                lskdpfijaw;ejfasdfsdfasdfasdfasdf
-                cxszocwhlkjfxszik vb9823ysadfasdf
-                9c8p243q fasp98cdh2l3qkj haos98lc
-                lskjdch p98q342h fp;asdcvao;pisdy
-                cvp98h32lud h98p2y rlsadcsado8f y
-                243hfiulo ysadfp98cv h324pq98f du
-                yhasdliof yq234[ r[as09df uiul243
-                qf yoliq3u4f cvb9paesawa4rgfav 24
-                3wqvy[98032q4f2yh[0paws3e4r yvfgc
-                okl8 aesr tg vo87lq234yvp934wytv 
-                7894 ;oasijcvalkwejfdo;ajsc;", 0.5, 400, 500);
+        if(x &gt; obj_npc.x)
+        {
+            x += (sprite_width + sw)/2 - abs(dx);
+        }
+        else
+        {
+            x -= (sprite_width + sw)/2 - abs(dx);
+        }
+        if(y &gt; obj_npc.y)
+        {
+            y += (sprite_height + sh)/2 - abs(dy);   
+        } 
+        else
+        {
+            y -= (sprite_height + sh)/2 - abs(dy);   
+        }
+    }
+}
+
+if(can_move) {
+    if(keyboard_check(vk_up))
+    {
+        vspeed -= acc;
+    }
+
+    if(keyboard_check(vk_down))
+    {
+        vspeed += acc;
+    }
+
+    if(keyboard_check(vk_left))
+    {
+        hspeed -= acc;
+    }
+
+    if(keyboard_check(vk_right))
+    {
+        hspeed += acc;
     }
 }
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="5" enumb="40">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -100,76 +192,162 @@ if keyboard_check(vk_space)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vspeed += 1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="5" enumb="39">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>hspeed += 1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="5" enumb="38">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>vspeed -= 1;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="5" enumb="37">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>hspeed -= 1;
+            <string>///interact with npcs
+if(keyboard_check_pressed(vk_space))
+{
+    ///Fear
+    if place_meeting(x, y, obj_n_Fear)
+    {
+        obj_player.can_move = false;
+        if(!txtexist &amp;&amp; fear1 &lt; 11)
+        {
+            txtexist = true;
+            var str;
+            switch(fear1)
+            {
+                case 0: str = obj_n_Fear.d1[0];break;
+                case 1: str = d1_fea[0];break;
+                case 2: str = obj_n_Fear.d1[1];break;
+                case 3: str = d1_fea[1];break;
+                case 4: str = obj_n_Fear.d1[2];break;;
+                case 5: str = d1_fea[2];break;
+                case 6: str = obj_n_Fear.d1[3];break;
+                case 7: str = d1_fea[3];break;
+                case 8: str = d1_fea[4];break;
+                case 9: str = obj_n_Fear.d1[4];break;
+                case 10: str = obj_n_Fear.d1[5];break;
+                default: str = "";break;
+            }
+            scr_dialoguebox(str, 0.5, 400, 500);
+            fear1++;
+        }
+        else if(!txtexist &amp;&amp; fear2 &lt; 11)
+        {
+            txtexist = true;
+            var str;
+            switch(fear2)
+            {
+                case 0: str = d2_fea[0];break;
+                case 1: str = d2_fea[1];break;
+                case 2: str = d2_fea[2];break;
+                case 3: str = obj_n_Fear.d2[0];break;
+                case 4: str = obj_n_Fear.d2[1];break;;
+                case 5: str = obj_n_Fear.d2[2];break;
+                case 6: str = obj_n_Fear.d2[3];break;
+                case 7: str = obj_n_Fear.d2[4];break;
+                case 8: str = d2_fea[3];break;
+                case 9: str = d2_fea[4];break;
+                case 10: str = obj_n_Fear.d2[5];break;
+                default: str = "";break;
+            }
+            scr_dialoguebox(str, 0.5, 400, 500);
+            fear2++;
+        }
+        else
+        {
+            scr_dialoguebox(obj_n_Fear.di[0], 0.5, 400, 500);
+        }
+    }
+    
+    ///Suspicion
+    if place_meeting(x, y, obj_n_Suspicion)
+    {
+        obj_player.can_move = false;
+        if(!txtexist)
+        {
+            txtexist = true;
+            var str;
+            switch(irandom(5))
+            {
+                case 0: str = obj_n_Suspicion.d1[0];break;
+                case 1: str = obj_n_Suspicion.d1[1];break;
+                case 2: str = obj_n_Suspicion.d1[2];break;
+                case 3: str = obj_n_Suspicion.d1[3];break;
+                case 4: str = obj_n_Suspicion.d1[4];break;;
+                case 5: str = obj_n_Suspicion.d1[5];break;
+                default: str = "";break;
+            }
+            scr_dialoguebox(str, 0.5, 400, 500);
+        }
+        
+    }
+    
+    ///Happiness
+    if place_meeting(x, y, obj_n_Happiness)
+    {
+        if(!txtexist &amp;&amp; hap1 &lt; 6)
+        {
+            txtexist = true;
+            var str;
+            switch(hap1)
+            {
+                case 0: str = obj_n_Happiness.d1[0];break;
+                case 1: str = d2_hap[0];break;
+                case 2: str = d2_hap[2];break;
+                default: str = "";break;
+            }
+            scr_dialoguebox(str, 0.5, 400, 500);
+            hap1++;
+        }
+        else if(!txtexist &amp;&amp; hap2 &lt; 6)
+        {
+            txtexist = true;
+            var str;
+            switch(hap2)
+            {
+                case 0: str = d2_fea[0];break;
+                case 1: str = obj_n_Happiness.d2[0];break;
+                case 2: str = d2_fea[1];break;
+                case 3: str = obj_n_Happiness.d2[0];break;
+                case 4: str = obj_n_Happiness.d2[1];break;;
+                case 5: str = obj_n_Happiness.d2[2];break;
+                case 6: str = obj_n_Happiness.d2[3];break;
+                default: str = "";break;
+            }
+            scr_dialoguebox(str, 0.5, 400, 500);
+            hap2++;
+        }
+        else
+        {
+            scr_dialoguebox(obj_n_Happiness.di[0], 0.5, 400, 500);
+        }
+    }
+    
+    ///Insecurity
+    if place_meeting(x, y, obj_n_Insecurity)
+    {
+        if(!txtexist)
+        {
+            scr_dialoguebox(obj_n_Fear.dialogue[0], 
+                        0.5, 400, 500);
+            txtexist = true;
+        }
+    }
+    
+    ///Hope
+    if place_meeting(x, y, obj_n_Hope)
+    {
+        if(!txtexist)
+        {
+            scr_dialoguebox(obj_n_Fear.dialogue[0], 
+                        0.5, 400, 500);
+            txtexist = true;
+        }
+    }
+    
+    ///Love
+    if place_meeting(x, y, obj_n_Love)
+    {
+        if(!txtexist)
+        {
+            scr_dialoguebox(obj_n_Fear.dialogue[0], 
+                        0.5, 400, 500);
+            txtexist = true;
+        }
+    }
+    
+    
+}
 </string>
           </argument>
         </arguments>
